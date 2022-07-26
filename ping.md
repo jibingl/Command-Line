@@ -34,8 +34,8 @@ netsh advfirewall firewall set rule name="File and Printer Sharing (Echo Request
 ```
 > Notes: The 'new' keyword must be present and must not be the last argument provided. Values after the 'new' keyword are updated in the rule.
 
-### PS *-NetFirewall*
-*-NetFirewall* means a set of cmdlets avialable in PowerShell.  
+### PS \*-NetFirewall\*
+`*-NetFirewall*` means a set of cmdlets avialable in PowerShell.  
 Firstly, get the current settings of "File and Printer Sharing (Echo Request - ICMPv4-In)":
 ```
 Show-NetFirewallRule | Where-Object {$_.DisplayName -eq "File and Printer Sharing (Echo Request - ICMPv4-In)"}
