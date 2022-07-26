@@ -14,7 +14,7 @@ An example to allow the response to `ping`:
 netsh advfirewall firewall add rule name="ICMP Allow incoming V4 echo request" protocol=icmpv4:8,any dir=in action=allow
 ```
 Or block the response by seting the value of _action_ to _block_.  
-(Reference https://www.howtogeek.com/howto/windows-vista/allow-pings-icmp-echo-request-through-your-windows-vista-firewall/)
+[Reference] (https://www.howtogeek.com/howto/windows-vista/allow-pings-icmp-echo-request-through-your-windows-vista-firewall/)
 
 ## #2 Set the Values of existing rules
 By defualt, Windows includes a rule named "File and Printer Sharing (Echo Request - ICMPv4-In)" which can be used to response to ping.  
