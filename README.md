@@ -1,10 +1,9 @@
-# PowerShell Common cmds and scripts
-
-## Enable the Response to `ping` on a Windows Host
+# Enable the Response to `ping` on a Windows Host
 `ping` is a useful tool for testing connectivity between hosts. It works by sending a _ICMP echo request_ to the target host and waiting for a _ICMP echo reply_.  
 To enable a host to respond to `ping` cmd, you simply set Windows firewall's rule to allow _ICMP echo_ packets get in.  
 The cmdlets of `netsh` and PowerShell can do so.
-### `netsh`
+
+## `netsh`
 **#1 Add a new rule into firewall inbound direction**
 ```
 Syntax:
@@ -37,8 +36,9 @@ netsh advfirewall firewall set rule name="File and Printer Sharing (Echo Request
 ```
  > Notes: The 'new' keyword must be present and must not be the last argument provided. Values after the 'new' keyword are updated in the rule.
 
-### PS of `*-NetFirewall*`
+## `*-NetFirewall*`
 `*-NetFirewall*` means a set of cmdlets avialable in PowerShell.
+
 **#3 Change the settings of existing rules**
 Firstly, Get the current settings of _"File and Printer Sharing (Echo Request - ICMPv4-In)"_
 ```
