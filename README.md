@@ -1,13 +1,13 @@
 # PowerShell Common cmds and scripts
 
-## Enable `ping` on a Windows host
+## Enable the Response to `ping` on a Windows Host
 `ping` is a useful tool for testing connectivity between hosts. It works by sending a _ICMP echo request_ to the target host and waiting for a _ICMP echo reply_.  
 To enable a host to respond to `ping` cmd, you simply set Windows firewall's rule to allow _ICMP echo_ packets get in.  
 The cmdlets of `netsh` and PowerShell can do so.
 ### `netsh`
-#1 **Add a new rule into firewall inbound direction**
+**#1 Add a new rule into firewall inbound direction**
 ```
-Syntax
+Syntax:
 netsh advfirewall firewall add rule name="<customer-name-for-the-new-rule>" protocol=icmpv4:8,any dir={in | out} action={allow | block}
 ```
 Example to allow to respond to `ping`:
@@ -20,7 +20,7 @@ netsh advfirewall firewall add rule name="ICMP Allow incoming V4 echo request" p
 ```
  > Reference https://www.howtogeek.com/howto/windows-vista/allow-pings-icmp-echo-request-through-your-windows-vista-firewall/
 
-#2 **Change the settings of an existing rule**
+**#2 Change the settings of an existing rule**  
 By defualt, Windows includes a rule named _"File and Printer Sharing (Echo Request - ICMPv4-In)"_ which can be used to response to `ping`.  
 Check the current settings of the rule by typing the following cmd:
 ```
@@ -37,7 +37,9 @@ netsh advfirewall firewall set rule name="File and Printer Sharing (Echo Request
 ```
  > Notes: The 'new' keyword must be present and must not be the last argument provided. Values after the 'new' keyword are updated in the rule.
 
-### PS cmdlets of `*-NetFirewall*`
+### PS of `*-NetFirewall*`
+`*-NetFirewall*` means a set of cmdlets avialable in PowerShell.
+**#3 Change the settings of existing rules**
 Firstly, Get the current settings of _"File and Printer Sharing (Echo Request - ICMPv4-In)"_
 ```
 Show-NetFirewallRule | Where-Object {$_.DisplayName -eq "File and Printer Sharing (Echo Request - ICMPv4-In)"}
