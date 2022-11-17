@@ -23,7 +23,7 @@ sfc /scannow
 ```
 To run SFC in Read-Only mode, then use this command
 ```
-sfc /verifyonly command
+sfc /verifyonly
 ```
 
 ## DISM (Deployment Image Servicing and Management)
@@ -39,7 +39,7 @@ dism /Online /Cleanup-Image /ScanHealth
 ```
 Once done, we need to apply these fixes to the operating system permanently.
 ```
-Dism /Online /Cleanup-Image /RestoreHealth
+dism /Online /Cleanup-Image /RestoreHealth
 ```
 
 
