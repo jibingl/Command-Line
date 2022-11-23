@@ -1,11 +1,11 @@
 # Ping.exe
 
-## _Ping_ command snytax
+## _Ping_ Command Snytax
 ```
 ping [/t] [/a] [/n <count>] [/l <size>] [/f] [/I <TTL>] [/v <TOS>] [/r <count>] [/s <count>] [{/j <hostlist> | /k <hostlist>}] [/w <timeout>] [/R] [/S <Srcaddr>] [/4] [/6] <targetname>
 ```
 
-## Packets formats
+## Packets (ICMP) Formats
 ### _ICMP - Echo Request & Echo Rely_ packets
 
 ```
@@ -61,3 +61,7 @@ Header   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+      
 Payload  |                          Payload (Optional)                   |         |                          Payload (Optional)                   |
 ```
 
+## _Ping_ Multiple Addresses
+```
+for /L %i in (101,1,123) do @ping 10.128.100.%i -c 1 | find "Reply"
+```
