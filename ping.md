@@ -63,5 +63,5 @@ Payload  |                          Payload (Optional)                   |      
 
 ## _Ping_ Multiple Addresses
 ```
-for /L %i in (101,1,123) do @ping 10.128.100.%i -n 1 | find "Reply"
+for /L %i in (100,1,200) do @ping 192.168.0.%i -n 1 | find "Reply"
 ```
