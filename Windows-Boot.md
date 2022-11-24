@@ -2,7 +2,7 @@
 ## Convert MBR to GPT
 Reference to [MBR2GPT.EXE](https://learn.microsoft.com/en-us/windows/deployment/mbr-to-gpt).  
 **MBR2GPT.EXE** converts a disk from the Master Boot Record (MBR) to the GUID Partition Table (GPT) partition style without modifying or deleting data on the disk.  
-#### Disk Prerequisites:
+#### 🔔 Disk Prerequisites:
 - The disk is currently using MBR
 - There are at most 3 primary partitions in the MBR partition table
 - Each volume has a drive letter assigned
