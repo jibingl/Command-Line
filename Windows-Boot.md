@@ -1,6 +1,6 @@
 # Discovery to Windows Boot
 ## Convert MBR to GPT
-Reference to [MBR2GPT.EXE](https://learn.microsoft.com/en-us/windows/deployment/mbr-to-gpt).  
+➡️ Reference to [MBR2GPT.EXE](https://learn.microsoft.com/en-us/windows/deployment/mbr-to-gpt).  
 **MBR2GPT.EXE** converts a disk from the Master Boot Record (MBR) to the GUID Partition Table (GPT) partition style without modifying or deleting data on the disk.  
 #### 🔔 Disk Prerequisites:
 - The disk is currently using MBR
@@ -128,7 +128,7 @@ Offset in Bytes: 524288000
 ```
 
 ## Mount A Windows Image
-Reference to [Modify a Windows image using DISM](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/mount-and-modify-a-windows-image-using-dism?view=windows-11#mount-an-image).  
+➡️ Reference to [Modify a Windows image using DISM](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/mount-and-modify-a-windows-image-using-dism?view=windows-11#mount-an-image).  
 Mounted images are WIM, VHD, or FFU files that have their contents mapped to a folder.
 #### Syntax:
 ```
