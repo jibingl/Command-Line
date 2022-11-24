@@ -5,6 +5,7 @@ Reference to [MBR2GPT.EXE](https://learn.microsoft.com/en-us/windows/deployment/
 #### Disk Prerequisites:
 - The disk is currently using MBR
 - There are at most 3 primary partitions in the MBR partition table
+- Each volume has a drive letter assigned
 #### Syntax:
 ```
 MBR2GPT /validate|convert [/disk:<diskNumber>] [/logs:<logDirectory>] [/map:<source>=<destination>] [/allowFullOS]
