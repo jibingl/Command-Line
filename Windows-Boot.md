@@ -128,8 +128,106 @@ Offset in Bytes: 524288000
 - Each volume has a drive letter assigned;
 - In BCD settings, the boot disk is the one you want;  
    🤞 Workaround: Set the right disk as the boot disk in BCD by using command `bcdboot.exe C:\Windows /s C:` (Here volume C of disk 0 is the meant system).
-- SOmetimes, the status of partitions will cause fialure.
+- SOmetimes, the status of partitions will cause fialure.  
    🤞 Check & Set system partition (e.g. C: volume) as _active_.
+
+#### Troubleshooting Examples:
+```console
+Microsoft Windows [Version 10.0.19044.1889]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>diskpart
+
+Microsoft DiskPart version 10.0.19041.964
+
+Copyright (C) Microsoft Corporation.
+On computer: NCT-209-06-08
+
+DISKPART> list disk
+
+  Disk ###  Status         Size     Free     Dyn  Gpt
+  --------  -------------  -------  -------  ---  ---
+  Disk 0    Online          931 GB      0 B
+  Disk 1    Online          931 GB      0 B        *
+
+DISKPART> select disk 0
+
+Disk 0 is now the selected disk.
+
+DISKPART> list partition
+
+  Partition ###  Type              Size     Offset
+  -------------  ----------------  -------  -------
+  Partition 1    Primary             50 MB  1024 KB
+  Partition 2    Primary            931 GB    51 MB
+
+DISKPART> select partition 2
+
+Partition 2 is now the selected partition.
+
+DISKPART> detail partition
+
+Partition 2
+Type  : 07
+Hidden: No
+Active: Yes
+Offset in Bytes: 53477376
+
+  Volume ###  Ltr  Label        Fs     Type        Size     Status     Info
+  ----------  ---  -----------  -----  ----------  -------  ---------  --------
+* Volume 1     C                NTFS   Partition    931 GB  Healthy    Boot
+
+DISKPART> exit
+
+Leaving DiskPart...
+
+C:\Windows\system32>mbr2gpt /validate /allowfullos
+MBR2GPT: Attempting to validate disk 1
+MBR2GPT: Retrieving layout of disk
+MBR2GPT: Validating layout, disk sector size is: 512 bytes
+Disk layout validation failed for disk 1
+
+C:\Windows\system32>bcdedit
+The boot configuration data store could not be opened.
+The requested system device cannot be found.
+
+C:\Windows\system32>mbr2gpt /validate /allowfullos /disk:0 /logs:c:\Users\CCNA\Desktop
+MBR2GPT: Attempting to validate disk 0
+MBR2GPT: Retrieving layout of disk
+MBR2GPT: Validating layout, disk sector size is: 512 bytes
+Cannot find OS partition(s) for disk 0
+
+
+C:\Windows\system32>bcdboot.exe C:\Windows /s C:
+Boot files successfully created.
+
+C:\Windows\system32>mbr2gpt /validate /allowfullos /disk:0 /logs:c:\Users\CCNA\Desktop
+MBR2GPT: Attempting to validate disk 0
+MBR2GPT: Retrieving layout of disk
+MBR2GPT: Validating layout, disk sector size is: 512 bytes
+MBR2GPT: Validation completed successfully
+
+
+C:\Windows\system32>mbr2gpt /convert /allowfullos /disk:0
+
+MBR2GPT will now attempt to convert disk 0.
+If conversion is successful the disk can only be booted in GPT mode.
+These changes cannot be undone!
+
+MBR2GPT: Attempting to convert disk 0
+MBR2GPT: Retrieving layout of disk
+MBR2GPT: Validating layout, disk sector size is: 512 bytes
+MBR2GPT: Trying to shrink the OS partition
+MBR2GPT: Creating the EFI system partition
+MBR2GPT: Installing the new boot files
+MBR2GPT: Performing the layout conversion
+MBR2GPT: Migrating default boot entry
+MBR2GPT: Fixing drive letter mapping
+MBR2GPT: Conversion completed successfully
+Call WinReReapir to repair WinRE
+MBR2GPT: Failed to update ReAgent.xml, please try to  manually disable and enable WinRE.
+MBR2GPT: Before the new system can boot properly you need to switch the firmware to boot to UEFI mode!
+```
 
 ## Mount A Windows Image
 ➡️ Reference to [Modify a Windows image using DISM](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/mount-and-modify-a-windows-image-using-dism?view=windows-11#mount-an-image).  
