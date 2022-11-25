@@ -2,10 +2,6 @@
 ## Convert MBR to GPT
 ➡️ Reference to [MBR2GPT.EXE](https://learn.microsoft.com/en-us/windows/deployment/mbr-to-gpt).  
 **MBR2GPT.EXE** converts a disk from the Master Boot Record (MBR) to the GUID Partition Table (GPT) partition style without modifying or deleting data on the disk.  
-#### 🔔 Disk Prerequisites:
-- The disk is currently using MBR
-- There are at most 3 primary partitions in the MBR partition table
-- Each volume has a drive letter assigned
 #### Syntax:
 ```
 MBR2GPT /validate|convert [/disk:<diskNumber>] [/logs:<logDirectory>] [/map:<source>=<destination>] [/allowFullOS]
@@ -126,6 +122,14 @@ Offset in Bytes: 524288000
   ----------  ---  -----------  -----  ----------  -------  ---------  --------
 * Volume 1     D   Windows      NTFS   Partition     58 GB  Healthy
 ```
+### 🖥️ Troubleshoot:
+- The disk is currently using MBR;
+- There are at most 3 primary partitions in the MBR partition table;
+- Each volume has a drive letter assigned;
+- In BCD settings, the boot disk is the one you want;  
+   🤞 Workaround: Set the right disk as the boot disk in BCD by using command `bcdboot.exe C:\Windows /s C:` (Here volume C of disk 0 is the meant system).
+- SOmetimes, the status of partitions will cause fialure.
+   🤞 Check & Set system partition (e.g. C: volume) as _active_.
 
 ## Mount A Windows Image
 ➡️ Reference to [Modify a Windows image using DISM](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/mount-and-modify-a-windows-image-using-dism?view=windows-11#mount-an-image).  
