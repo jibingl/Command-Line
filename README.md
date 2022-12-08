@@ -5,4 +5,4 @@
 3. [Ping.exe](https://github.com/jibingl/PS-and-CMD/blob/main/ping.md)
 4. [Commands for Blue Screen of Death (BSOD).](https://github.com/jibingl/PS-and-CMD/blob/main/BSOD.md)
 5. [Discovery to Windows Boot.](https://github.com/jibingl/PS-and-CMD/blob/main/Windows-Boot.md)
-6. [GRUB Sets to Boot from USB.](https://github.com/jibingl/PS-and-CMD/blob/main/grub-boot-usb.md#grub-sets-to-boot-from-usb)
+6. [GRUB Sets to Boot from USB.](https://github.com/jibingl/PS-and-CMD/blob/main/grub-boot-usb.md)
