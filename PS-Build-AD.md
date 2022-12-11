@@ -1,5 +1,9 @@
 # PowerShell Builds Active Directory Domain Service
-
+* Setup the first domain controller
+* Create organizations' users, computers, and departements
+* Deploy Group Policy
+* Schedule tasks
+* Secure Active Directory
 
 ## Setup a Windows Server 2019 as the first domain controller
 
